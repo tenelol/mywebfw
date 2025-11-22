@@ -11,11 +11,17 @@ import (
 func main() {
 	r := framework.NewRouter()
 
-	serveHTML := func(path string) framework.HandlerFunc {
-		return func(ctx *framework.Context) {
-			http.ServeFile(ctx.W, ctx.Req, path)
-		}
-	}
+serveHTML := func(path string) framework.HandlerFunc {
+    return func(ctx *framework.Context) {
+        // HTML もキャッシュさせない
+        ctx.W.Header().Set("Cache-Control", "no-cache, no-store, must-revalidate")
+        ctx.W.Header().Set("Pragma", "no-cache")
+        ctx.W.Header().Set("Expires", "0")
+
+        http.ServeFile(ctx.W, ctx.Req, path)
+    }
+}
+
 
 	// ページ
 	r.Handle("GET", "/",        serveHTML("apps/portfolio/index.html"))
