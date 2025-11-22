@@ -17,16 +17,16 @@ document.addEventListener("DOMContentLoaded", async () => {
       container.textContent = "No projects yet.";
       return;
     }
-
 function getFavicon(url) {
   try {
     const domain = new URL(url).hostname;
-    return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+    // SVG favicon API に変更
+    return `https://icons.duckduckgo.com/ip3/${domain}.ico`;
   } catch {
+    // URL おかしいとき用の保険
     return "/static/default-icon.png";
   }
 }
-
 
 
 /*
