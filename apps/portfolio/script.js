@@ -18,21 +18,56 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
 
-	const html = projects
-  	 .map(
-	   (p) => `
-      		<article class="project-card">
-        	<h2>${p.name}</h2>
-       	 	<p>${p.description}</p>
-        	${
-          	p.url
-            	? `<p><a href="${p.url}" target="_blank" rel="noopener noreferrer">View more</a></p>`
-            : ""
-        }
-      </article>
+function getFavicon(url) {
+  try {
+    const domain = new URL(url).hostname;
+    return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+  } catch {
+    return "/static/default-icon.png";
+  }
+}
+
+
+
+/*
+const html = projects
+  .map(
+    (p) => `
+      <a class="project-card"
+         href="${p.url}"
+         target="_blank"
+         rel="noopener noreferrer">
+        <h2>${p.name}</h2>
+        <p>${p.description}</p>
+      </a>
     `
   )
   .join("");
+*/
+
+const html = projects
+  .map(
+    (p) => `
+      <a class="project-card"
+         href="${p.url}"
+         target="_blank"
+         rel="noopener noreferrer">
+        <div class="project-card-inner">
+          <div class="project-icon">
+            <img src="${getFavicon(p.url)}" alt="${p.name} icon" />
+          </div>
+          <div class="project-content">
+            <h2>${p.name}</h2>
+            <p>${p.description}</p>
+          </div>
+        </div>
+      </a>
+    `
+  )
+  .join("");
+
+container.innerHTML = html;
+
 
 
     container.innerHTML = html;
@@ -43,9 +78,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 // 例：loadProjects の中
-
+/*
 projects.forEach(p => {
-    const card = document.createElement('article');
+   const card = document.createElement('article');
     card.className = 'project-card';
 
     card.innerHTML = `
@@ -56,4 +91,4 @@ projects.forEach(p => {
 
     container.appendChild(card);
 });
-
+*/

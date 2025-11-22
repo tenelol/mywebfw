@@ -18,15 +18,15 @@ type Project struct {
 var projects = []Project{
     {
         ID:          1,
-        Name:        "dotfiles",
-        Description: ".config",
-	URL:         "https://github.com/tener-kiwi",
+        Name:        "nixos-dotfiles",
+        Description: "my nix serverized configuration",
+	URL:         "https://github.com/tenelol/nixos-dotfiles",
     },
     {
         ID:          2,
         Name:        "My Framework",
-        Description: "自作 Go Web フレームワーク",
-	URL:         "https://github.com/tener-kiwi", // ここは適当に
+        Description: "My portfolio configuration with self-made framework",
+	URL:         "https://github.com/tenelol/mywebfw", 
     },
     // 必要なだけ続ける
 }
