@@ -45,6 +45,11 @@ body {
         -24px -24px 48px var(--shadow-light);
 }
 
+
+main {
+    margin-top: 10rem;
+}
+
 /* ヒーロー部分 */
 
 .hero {
@@ -247,5 +252,153 @@ body {
 
 .project-content h2 {
     margin-top: 0;
+}
+
+.tinder--buttons {
+  display: none;
+}
+
+
+/* ===== Tinder swipe section (tener version) ===== */
+
+/* セクション全体を中央に置く箱 */
+.swipe-container {
+    margin: 2.5rem auto 10rem;
+    width: 100%;
+    max-width: 360px;
+}
+
+/* スワイプUI本体 */
+.tinder {
+  position: relative;
+  width: 100%;
+}
+
+/* カードを重ねる土台 */
+.tinder--cards {
+  position: relative;
+  width: 100%;
+  min-height: 320px;   /* カード束の高さ。必要ならここだけ後で調整 */
+}
+
+/* 各カード：全部同じ位置に重ねる */
+.tinder--card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+
+  width: 100%;
+  background: var(--bg-elevated);
+  color: var(--text-main);
+  border-radius: var(--radius-medium);
+  overflow: hidden;
+  box-shadow:
+      14px 14px 28px var(--shadow-dark),
+      -10px -10px 20px var(--shadow-light);
+  will-change: transform;
+  transition: all 0.3s ease-in-out;
+  cursor: grab;
+}
+
+.tinder--card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.tinder--card h3 {
+  margin: 0.75rem 1rem 0.25rem;
+  font-size: 1.1rem;
+}
+
+.tinder--card p {
+  margin: 0 1rem 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* スワイプ中に出るでかいハート/バツ（普段は見えない） */
+.tinder--status {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  pointer-events: none;
+}
+
+.tinder--status i {
+  font-size: 72px;
+  opacity: 0;
+  transform: scale(0.3);
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  left: 50%;
+  margin-left: -36px;
+}
+
+.tinder_love .fa-heart {
+  opacity: 0.7;
+  transform: scale(1);
+}
+
+.tinder_nope .fa-remove {
+  opacity: 0.7;
+  transform: scale(1);
+}
+
+/* 下のボタンは“幽霊ボタン”にしてJSだけ生かす */
+.tinder--buttons {
+  display: none;
+}
+
+/* ===== Swipe: Responsive layout tuning ===== */
+
+/* 全画面でもカードが中央に来るようにする */
+.swipe-container {
+    margin: 2rem auto 4rem auto;
+    width: 100%;
+    max-width: 420px;           /* スマホ・タブレットではこれでちょうどいい */
+}
+
+/* ====== 中サイズ画面（~1200px） ====== */
+@media (min-width: 900px) {
+    .swipe-container {
+        max-width: 360px;       /* カードを少し小さくしてバランス調整 */
+    }
+}
+
+/* ====== 大画面（1200px~） ====== */
+@media (min-width: 1200px) {
+    .swipe-container {
+        max-width: 320px;       /* 大画面ではさらに縮めて上品に */
+        margin-top: 1.5rem;
+    }
+}
+
+/* ====== 超大画面（1600px~） ====== */
+@media (min-width: 1600px) {
+    .swipe-container {
+        max-width: 300px;
+    }
+}
+
+/* カードスタックの高さも画面に応じて縮む */
+.tinder--cards {
+    min-height: 360px;
+}
+
+@media (min-width: 1200px) {
+    .tinder--cards {
+        min-height: 320px;  /* カードを小さくする */
+    }
+}
+
+@media (min-width: 1600px) {
+    .tinder--cards {
+        min-height: 300px;
+    }
 }
 
