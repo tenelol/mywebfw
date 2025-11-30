@@ -19,7 +19,7 @@ var projects = []Project{
     {
         ID:          4,
         Name:        "nixosをサーバー化した話",
-        Description: "my fast qiita journal",
+        Description: "my first qiita journal",
 	URL:         "https://qiita.com/tener/items/940198e079b20385cfab",
     },
 
